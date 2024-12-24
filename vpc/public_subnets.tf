@@ -23,7 +23,7 @@ resource "aws_route_table" "public" {
   vpc_id = aws_vpc.main.id
 
   tags = {
-    Name = "rt-public-access-${var.project_name}"
+    Name = "public-access-${var.project_name}"
   }
 }
 
