@@ -65,6 +65,8 @@ resource "aws_lb_target_group_attachment" "internal_lb" {
   target_group_arn = aws_lb_target_group.vpclink.arn
   target_id        = aws_lb.internal.id
   port             = 80
+
+  depends_on = [aws_lb_target_group.vpclink, aws_lb.internal]
 }
 
 resource "aws_api_gateway_vpc_link" "main" {
