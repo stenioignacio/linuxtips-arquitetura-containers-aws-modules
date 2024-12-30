@@ -45,13 +45,13 @@ resource "aws_lb" "internal" {
 
 resource "aws_lb_listener" "internal" {
   load_balancer_arn = aws_lb.internal.arn
-  port              = "80"
+  port              = 80
   protocol          = "HTTP"
   default_action {
     type = "fixed-response"
     fixed_response {
       content_type = "text/plain"
-      message_body = "linuxtips"
+      message_body = format("LinuxTips Internal - %s", var.region)
       status_code  = "200"
     }
   }

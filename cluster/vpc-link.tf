@@ -39,8 +39,8 @@ resource "aws_lb" "vpclink" {
 resource "aws_lb_target_group" "vpclink" {
   name        = "vpc-link"
   port        = 80
-  protocol    = "HTTP"
-  target_type = "ip"
+  protocol    = "TCP"
+  target_type = "alb"
 
   vpc_id = var.vpc_id
 
@@ -51,9 +51,8 @@ resource "aws_lb_target_group" "vpclink" {
 
 resource "aws_lb_listener" "vpclink" {
   load_balancer_arn = aws_lb.vpclink.arn
-
-  port     = 80
-  protocol = "HTTP"
+  port              = 80
+  protocol          = "TCP"
 
   default_action {
     type             = "forward"
